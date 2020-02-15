@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
-const {JWY_SECRET} = require('../../config/constrains')
+//const {JWY_SECRET} = require('../../config/constrains')
 const Task = require('./task')
 
 
@@ -76,7 +76,7 @@ userSchema.methods.toJSON = function () {
 
 userSchema.methods.generatAuthToken = async function () {
     const user = this
-    const token = jwt.sign({ _id: user._id.toString() }, JWY_SECRET)
+    const token = jwt.sign({ _id: user._id.toString() }, process.env.JWY_SECRET)
 
     user.tokens = user.tokens.concat({ token })
     await user.save()
