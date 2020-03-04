@@ -12,6 +12,6 @@ app.use(taskRouter)
 //dfsdfadfa
 
 app.listen(port, () => {
-    console.log('server is up on port ' + process.env.PORT)
+    console.log('server is up on port ' + port)
 })
 
