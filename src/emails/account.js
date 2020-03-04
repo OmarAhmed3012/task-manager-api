@@ -1,30 +1,26 @@
 const sgMail = require('@sendgrid/mail')
-const {SENDGRID_API_KEY} = require('../../config/constrains')
 
-//const sendgridAPIKey = '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'
-const sendgridAPIKey = process.env.SENDGRID_API_KEY || SENDGRID_API_KEY
-
-sgMail.setApiKey(sendgridAPIKey)
+sgMail.setApiKey(process.env.SENDGRID_API_KEY)
 
 const sendWelcomeEmail = (email, name) => {
     sgMail.send({
         to: email,
         from: 'omaraboshamaa@gmail.com',
-        subject: 'Welcome from nodeJS',
-        text: `Welcome to the app, ${name}. how are you doin.`
+        subject: 'Thanks for joining in!',
+        text: `Welcome to the app, ${name}. Let me know how you get along with the app.`
     })
 }
 
-const sendcancelemail = (email, name) => {
+const sendCancelationEmail = (email, name) => {
     sgMail.send({
         to: email,
         from: 'omaraboshamaa@gmail.com',
-        subject: 'Goodbye',
-        text: `Goodbye ${name} hope see you again`
+        subject: 'Sorry to see you go!',
+        text: `Goodbye, ${name}. I hope to see you back sometime soon.`
     })
 }
 
 module.exports = {
     sendWelcomeEmail,
-    sendcancelemail
+    sendCancelationEmail
 }
