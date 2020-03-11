@@ -13,6 +13,15 @@ app.use(function (req, res, next) {
 });
 
 
+const bodyParser = require('body-parser');
+
+// support parsing of application/json type post data
+app.use(bodyParser.json());
+
+//support parsing of application/x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
 app.use(express.json())
 app.use(userRouter)
 app.use(taskRouter)
